@@ -1,38 +1,119 @@
+* {
+  margin:0;
+  padding:0;
+  border:0;
+  background:transparent;
+  outline:none;
+  text-decoration:none;
+  outline:none;
+  font-family:inherit;
+  box-sizing:border-box;
+}
+
+ol, ul, li {
+  list-style:none;
+  display:block;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing:0;
+}
+
+a, img {
+  border: none;
+}
+
+button, a {
+  cursor: pointer;
+  color: inherit;
+}
+
+textarea {
+  resize: none;
+}
+
+/* button, input, textarea {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+} */
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+input {
+  margin-top: 20px;
+  padding: 4px;
+  border: 1px solid;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container {
+  margin: 50px auto 0;
+  min-width: 700px;
+  width: fit-content;
+  height: fit-content;
+  border: 1px solid red;
+  border-radius: 15px;
+  font-size: 19px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.locationName {
+  margin-top: 20px;
+  font-size: 20px;
+}
+/* .iconContainer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-evenly;
+} */
+
+.celsius {
+  margin-top: 10px;
+  font-size: 35px;
 }
 
-.App-link {
-  color: #61dafb;
+button {
+  margin: auto 10px;
+  font-size: 18px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.hiddenButton {
+  visibility: hidden;
+}
+
+img {
+  height: 90px;
+}
+
+.conditionText {
+  font-size: 25px;
+}
+
+.bottom {
+  margin: 40px auto 20px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.forescastContainer {
+  width: 80%;
+  border: 1px solid blue;
+  margin: 10px auto;
+  background-color: grey;
+}
+
+.forescastContainer, .sixHours {
+  display: flex;
+}
+
+.sixHours {
+  margin: 0 auto;
+}
+
+.sixHours div {
+  margin: 0 5px;
+}
+
+.sixHours button {
+  margin: 0 30px;
 }
