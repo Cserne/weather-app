@@ -96,14 +96,18 @@ img {
   justify-content: space-evenly;
 }
 
-.forescastContainer {
+.foreCastContainer {
   width: 80%;
   border: 1px solid blue;
   margin: 10px auto;
   background-color: grey;
 }
 
-.forescastContainer, .sixHours {
+.foreCastContainer, .sixHours {
+  display: flex;
+}
+
+.byHour {
   display: flex;
 }
 
@@ -117,4 +121,11 @@ img {
 
 .sixHours button {
   margin: 0 30px;
+}
+
+.threeDayForecastContainer {
+  padding: 10px 0;
+  border: 1px solid pink;
+  display: flex;
+  justify-content: space-evenly;
 }

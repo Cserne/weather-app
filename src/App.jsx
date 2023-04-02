@@ -21,13 +21,6 @@ function App() {
   const api = "http://api.weatherapi.com/v1/forecast.json?";
   const key = "key=fa7cf46dad1d4b5f8c992048220306&q=";
 
-  const budapest = async () => {
-    let basicResponse = await http.get("http://api.weatherapi.com/v1/forecast.json?key=fa7cf46dad1d4b5f8c992048220306&q=Budapest");
-    // console.log("BASIC:", basicResponse.data);
-    setBasicCity(basicResponse.data);
-  };
-  budapest();
-
   
   const found = (e) => {
     setSearched(e.target.value);
@@ -36,17 +29,25 @@ function App() {
     // load();
     // console.log(weatherData.location);
   }
-  const load = async (e) => {
-    let response = await http.get(api + key + searched + "&days=7");
-    console.log('Ez minden:', response.data);
-    setWeatherData(response.data);
-    // console.log(weatherData.location.name);
-    console.log('Előrejelzés:', weatherData.forecast);
-    // setSearched(response.data);
-  };
-
+  
   useEffect(() => {
     console.log(searched);
+    const budapest = async () => {
+      let basicResponse = await http.get("http://api.weatherapi.com/v1/forecast.json?key=fa7cf46dad1d4b5f8c992048220306&q=Budapest&days=3");
+      // console.log("BASIC:", basicResponse.data);
+      setBasicCity(basicResponse.data);
+    };
+    budapest();
+  
+  
+    const load = async (e) => {
+      let response = await http.get(api + key + searched + "&days=3");
+      console.log('Ez minden:', response.data);
+      setWeatherData(response.data);
+      // console.log(weatherData.location.name);
+      console.log('Előrejelzés:', weatherData.forecast);
+      // setSearched(response.data);
+    };
     load();
   }, [searched])
 
