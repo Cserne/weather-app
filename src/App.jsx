@@ -1,6 +1,6 @@
 import './App.css';
 import http from 'axios';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 // import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 // import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 //import img from '../src/images/background.jpg';
@@ -44,10 +44,10 @@ function App() {
   
     const load = async (e) => {
       let response = await http.get(api + key + searched + "&days=3");
-      console.log('Ez minden:', response.data);
+      // console.log('Ez minden:', response.data);
       setWeatherData(response.data);
       // console.log(weatherData.location.name);
-      console.log('Előrejelzés:', weatherData.forecast);
+      // console.log('Előrejelzés:', weatherData.forecast);
       // setSearched(response.data);
     };
     load();
@@ -56,7 +56,31 @@ function App() {
   const metricToImperial = () => {
     setCelsius(!celsius);
     setKmPerHour(!kmPerHour);
-  }
+  };
+
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 12,
+      slidesToSlide: 3
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 6,
+      slidesToSlide: 3
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 4,
+      slidesToSlide: 1
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 3,
+      slidesToSlide: 1
+    }
+  };
 
   const nextSixHours = () => {
     setShowFirstSix(!showFirstSix);
@@ -82,9 +106,9 @@ function App() {
           <input placeholder='Find your city' onChange={found}/>
             {
                 weatherData ?
-                <WeatherForecast weatherData={weatherData} celsius={celsius} kmPerHour={kmPerHour} metricToImperial={metricToImperial} showFirstSix={showFirstSix} showSecondSix={showSecondSix} showThirdSix={showThirdSix} showFourthSix={showFourthSix} nextSixHours={nextSixHours} thirdSixHours={thirdSixHours} fourthSixHours={fourthSixHours}/>
+                <WeatherForecast weatherData={weatherData} celsius={celsius} kmPerHour={kmPerHour} metricToImperial={metricToImperial} responsive={responsive} showFirstSix={showFirstSix} showSecondSix={showSecondSix} showThirdSix={showThirdSix} showFourthSix={showFourthSix} nextSixHours={nextSixHours} thirdSixHours={thirdSixHours} fourthSixHours={fourthSixHours}/>
                 : 
-                <BasicCityData basicCity={basicCity} celsius={celsius} metricToImperial={metricToImperial} kmPerHour={kmPerHour} showFirstSix={showFirstSix} showSecondSix={showSecondSix} showThirdSix={showThirdSix} showFourthSix={showFourthSix} nextSixHours={nextSixHours} thirdSixHours={thirdSixHours} fourthSixHours={fourthSixHours}/>
+                <BasicCityData basicCity={basicCity} celsius={celsius} metricToImperial={metricToImperial} kmPerHour={kmPerHour} responsive={responsive} showFirstSix={showFirstSix} showSecondSix={showSecondSix} showThirdSix={showThirdSix} showFourthSix={showFourthSix} nextSixHours={nextSixHours} thirdSixHours={thirdSixHours} fourthSixHours={fourthSixHours}/>
               // weatherData ?
               //     <div className='container'>
               //       <div className='locationName'>{weatherData.location.name}

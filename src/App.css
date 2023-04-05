@@ -53,18 +53,43 @@ input {
   color: #feb952b4;
 }
 
+.react-multi-carousel-list {
+  position: static !important;
+  margin: 0 auto;
+  height: 100px;
+  width: 100%;
+}
+
+.react-multiple-carousel__arrow--left {
+  position: absolute;
+  left: -10% !important;
+}
+
+.react-multiple-carousel__arrow--right {
+  position: absolute;
+  right: -10% !important;
+}
+
 .container {
   background-color: #feb95254;
   margin: 40px auto 0;
-  width: fit-content;
+  width: 60%;
   height: fit-content;
   box-shadow: 5px 5px 15px 5px;
   border-radius: 15px;
   font-size: 19px;
 }
 
+hr {
+  margin: 10px auto;
+  width: 70%;
+  border: 2px solid wheat;
+  opacity: 0.3;
+}
+
 .top {
   margin: 20px 0;
+  padding: 0 10px;
   height: 100px;
   display: flex;
   justify-content: space-evenly;
@@ -74,11 +99,12 @@ input {
   display: flex;
   /* flex-direction: column; */
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .locationName {
   position: relative;
-  padding-top: 20px;
+  padding-top: 25px;
   font-size: 20px;
 }
 
@@ -86,6 +112,7 @@ input {
   position: absolute;
   top: 0;
   right: 0;
+  margin: 8px 15px 0 0;
   font-size: 14px;
   font-weight: 300;
   color: wheat;
@@ -95,14 +122,10 @@ input {
   font-size: 15px;
 }
 
-.locationName button {
-  margin: 10px 15px 0 0;
-}
-
 .celsius {
   width: 130px;
   align-self: center;
-  font-size: 65px;
+  font-size: 62px;
   font-weight: 300;
 }
 
@@ -152,9 +175,10 @@ img {
 }
 
 .foreCastContainer {
+  position: relative;
   width: 80%;
   margin: 10px auto;
-  padding: 20px 10px;
+  /* padding: 20px 10px; */
 }
 
 .foreCastContainer, .sixHours {
@@ -224,14 +248,9 @@ img {
   }
 }
 
-/* @media screen and (max-width: 650px) {
-  .container {
-    width: 400px;
+@media screen and (max-width: 450px) {
+  .celsius {
+    padding-left: 15px;
+    font-size: 55px;
   }
 }
-
-@media screen and (max-width: 470px) {
-  .container {
-    width: 230px;
-  }
-} */
