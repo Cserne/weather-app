@@ -54,7 +54,8 @@ const WeatherForecast = ({ weatherData, celsius, kmPerHour, metricToImperial, re
               {
                 weatherData.forecast.forecastday[0].hour.map((h, i) => (
                   <div key={i}>
-                    <div>{h.time.substring(11, 16)}</div>
+                    <div className='time'>{h.time.substring(11, 16)}</div>
+                    <hr></hr>
                     {
                       celsius ?
                       <div>{Math.round(h.temp_c)}°C</div>

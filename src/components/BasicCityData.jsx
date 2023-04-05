@@ -1,11 +1,8 @@
 import React from 'react';
-// import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-// import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-const BasicCityData = ({ basicCity, celsius, kmPerHour, metricToImperial, responsive, showFirstSix, showSecondSix, showThirdSix, showFourthSix, nextSixHours, thirdSixHours, fourthSixHours }) => {
-
+const BasicCityData = ({ basicCity, celsius, kmPerHour, metricToImperial, responsive }) => {
 
   return (
     <div>
@@ -53,11 +50,12 @@ const BasicCityData = ({ basicCity, celsius, kmPerHour, metricToImperial, respon
           <div className='localTime'>Local time: {basicCity.location.localtime.substring(11, 16)}</div>
           
           <div className='foreCastContainer'>
-            <Carousel infinite={false} autoPlay={false} responsive={responsive}>
+            <Carousel infinite={false} autoPlay={false} transitionTime={10000} responsive={responsive}>
               {
                 basicCity.forecast.forecastday[0].hour.map((h, i) => (
                   <div key={i}>
-                    <div>{h.time.substring(11, 16)}</div>
+                    <div className='time'>{h.time.substring(11, 16)}</div>
+                    <hr></hr>
                     {
                       celsius ?
                       <div>{Math.round(h.temp_c)}°C</div>
@@ -69,8 +67,6 @@ const BasicCityData = ({ basicCity, celsius, kmPerHour, metricToImperial, respon
               }
             </Carousel>
           </div>
-
-          <hr></hr>
 
           <div >
             <div className='threeDayForecastContainer'>{basicCity.forecast.forecastday.map((day) => (
