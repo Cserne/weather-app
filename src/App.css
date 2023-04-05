@@ -40,37 +40,70 @@ textarea {
 
 .App {
   text-align: center;
+  font-family: 'Comfortaa', cursive;
 }
 
 input {
+  height: 35px;
   margin-top: 20px;
   padding: 4px;
-  border: 1px solid;
+  border: 1px solid #feb9529c;
+  border-radius: 2px;
+  font-size: 15px;
+  color: #feb952b4;
 }
 
 .container {
-  background-color: rgb(155, 180, 187, 0.8);
-  margin: 50px auto 0;
-  min-width: 700px;
+  background-color: #feb95254;
+  margin: 40px auto 0;
   width: fit-content;
   height: fit-content;
-  border: 1px solid red;
+  box-shadow: 5px 5px 15px 5px;
   border-radius: 15px;
   font-size: 19px;
 }
 
-.locationName {
-  margin-top: 20px;
-  font-size: 20px;
-}
-/* .iconContainer {
+.top {
+  margin: 20px 0;
+  height: 100px;
   display: flex;
   justify-content: space-evenly;
-} */
+}
+
+.top div:first-child {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-evenly;
+}
+
+.locationName {
+  position: relative;
+  padding-top: 20px;
+  font-size: 20px;
+}
+
+.locationName button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 14px;
+  font-weight: 300;
+  color: wheat;
+}
+
+.regionName {
+  font-size: 15px;
+}
+
+.locationName button {
+  margin: 10px 15px 0 0;
+}
 
 .celsius {
-  margin-top: 10px;
-  font-size: 35px;
+  width: 130px;
+  align-self: center;
+  font-size: 65px;
+  font-weight: 300;
 }
 
 button {
@@ -83,24 +116,45 @@ button {
 }
 
 img {
-  height: 90px;
+  height: 80px;
+  width: 90px;
+  object-fit: cover;
 }
 
 .conditionText {
-  font-size: 25px;
+  align-self: center;
+  width: fit-content;
+  font-size: 22px;
 }
 
 .bottom {
   margin: 40px auto 20px;
+  padding: 0 10px;
   display: flex;
   justify-content: space-evenly;
 }
 
+.bottom div {
+  width: fit-content;
+  padding: 0 10px;
+}
+
+/* .bottom div {
+  width: 150px;
+} */
+
+/* .bottom div:nth-child(3) {
+  text-align: left;
+}
+ */
+.localTime {
+  padding: 15px 0 0 0;
+}
+
 .foreCastContainer {
   width: 80%;
-  border: 1px solid blue;
   margin: 10px auto;
-  background-color: grey;
+  padding: 20px 10px;
 }
 
 .foreCastContainer, .sixHours {
@@ -124,8 +178,60 @@ img {
 }
 
 .threeDayForecastContainer {
-  padding: 10px 0;
-  border: 1px solid pink;
+  padding: 15px 0;
   display: flex;
   justify-content: space-evenly;
+  font-weight: 300;
 }
+
+.threeDayForecast div:first-child {
+  font-size: 14px;
+}
+
+@media screen and (max-width: 960px) {
+  .bottom div {
+    padding: 0 10px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .bottom div:nth-child(3) {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 815px) {
+  .bottom {
+    flex-direction: column;
+  }
+
+  .bottom div {
+    align-self: center;
+  }
+
+  .top {
+    margin: 20px 0;
+  }
+
+  .bottom {
+    margin: 20px auto;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .top {
+    flex-direction: column;
+  }
+}
+
+/* @media screen and (max-width: 650px) {
+  .container {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .container {
+    width: 230px;
+  }
+} */

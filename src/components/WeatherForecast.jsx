@@ -2,7 +2,7 @@ import React from 'react';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-const WeatherForecast = ({ weatherData, celsius, celsiusToFahr, showFirstSix, showSecondSix, showThirdSix, showFourthSix, nextSixHours, thirdSixHours, fourthSixHours}) => {
+const WeatherForecast = ({ weatherData, celsius, kmPerHour, metricToImperial, showFirstSix, showSecondSix, showThirdSix, showFourthSix, nextSixHours, thirdSixHours, fourthSixHours}) => {
   
   let first6 = weatherData.forecast.forecastday[0].hour.slice(0, 6);
   let second6 = weatherData.forecast.forecastday[0].hour.slice(6, 12);
@@ -14,31 +14,45 @@ const WeatherForecast = ({ weatherData, celsius, celsiusToFahr, showFirstSix, sh
       {
         weatherData &&
         <div className='container'>
-          <div className='locationName'>{weatherData.location.name}
-            <div>({weatherData.location.region}, {weatherData.location.country})</div>
+          <div className='locationName'>
+            {weatherData.location.name}
+            <div className='regionName'>({weatherData.location.region}, {weatherData.location.country})</div>
+            {
+              celsius ?
+              <button onClick={metricToImperial}>imperial</button>
+              :
+              <button onClick={metricToImperial}>metric</button>
+            }
           </div>
-            <div className='celsius'>
-              {
-                celsius ? 
-                <div>
-                  <span>{weatherData.current.temp_c}°C</span> 
-                  <button onClick={celsiusToFahr}>F</button>
-                </div>
-                :
-                <div>
-                  {weatherData.current.temp_f}°F 
-                  <button onClick={celsiusToFahr}>C</button>
-                </div>
-              }
+          <div className='top'>
+            {
+              celsius ? 
+              <div className='celsius'>
+                {Math.round(weatherData.current.temp_c)}°C
+              </div>
+              :
+              <div className='celsius'>
+                {Math.round(weatherData.current.temp_f)}°F 
+              </div>
+            }
+            <div>
+              <img alt='icon' src={`https:${weatherData.current.condition.icon}`}></img>
+              <div className='conditionText'>{weatherData.current.condition.text}</div>
             </div>
-            <img alt='icon' src={`https:${weatherData.current.condition.icon}`}></img>
-          <div className='conditionText'>{weatherData.current.condition.text}</div>
+          </div>
           <div className='bottom'>
             <div>Humidity: {weatherData.current.humidity}%</div>
             <div>UV-index: {weatherData.current.uv}</div>
-            <div>Wind: {weatherData.current.wind_kph} km/h / {weatherData.current.wind_mph} m/h</div>
+            <div>
+              {
+                kmPerHour ?
+                <div>Wind: {Math.round(weatherData.current.wind_kph)} km/h</div>
+                : 
+                <div>Wind: {Math.round(weatherData.current.wind_mph)} m/h</div>
+              }
+            </div>
           </div>
-          <div>Local time: {weatherData.location.localtime.substring(11, 16)}</div>
+          <div className='localTime'>Local time: {weatherData.location.localtime.substring(11, 16)}</div>
 
           <div className='foreCastContainer'>
           {
@@ -113,16 +127,17 @@ const WeatherForecast = ({ weatherData, celsius, celsiusToFahr, showFirstSix, sh
 
           <div >
             <div className='threeDayForecastContainer'>{weatherData.forecast.forecastday.map((day) => (
-              <div>
-                <div className='threeDayForecast'>{day.date}</div>
+              <div className='threeDayForecast'>
+                <div>{day.date}</div>
                 {
                   celsius ?
-                  <div className='threeDayForecast'>{Math.round(day.day.avgtemp_c)}°C</div>
+                  <div>{Math.round(day.day.avgtemp_c)}°C</div>
                   :
-                  <div className='threeDayForecast'>{Math.round(day.day.avgtemp_f)}°F</div>
+                  <div>{Math.round(day.day.avgtemp_f)}°F</div>
                 }
               </div>
-            ))}</div>
+            ))}
+            </div>
           </div>
         </div>    
       }
