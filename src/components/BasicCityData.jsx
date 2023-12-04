@@ -68,9 +68,9 @@ const BasicCityData = ({ basicCity, celsius, kmPerHour, metricToImperial, respon
             </Carousel>
           </div>
 
-          <div >
-            <div className='threeDayForecastContainer'>{basicCity.forecast.forecastday.map((day) => (
-              <div className='threeDayForecast'>
+          <div>
+            <div className='threeDayForecastContainer'>{basicCity.forecast.forecastday.map((day, i) => (
+              <div className='threeDayForecast' key={i}>
                 <div>{day.date}</div>
                 {
                   celsius ?

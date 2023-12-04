@@ -69,8 +69,8 @@ const WeatherForecast = ({ weatherData, celsius, kmPerHour, metricToImperial, re
           </div>
 
           <div >
-            <div className='threeDayForecastContainer'>{weatherData.forecast.forecastday.map((day) => (
-              <div className='threeDayForecast'>
+            <div className='threeDayForecastContainer'>{weatherData.forecast.forecastday.map((day, i) => (
+              <div className='threeDayForecast' key={i}>
                 <div>{day.date}</div>
                 {
                   celsius ?

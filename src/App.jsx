@@ -22,7 +22,7 @@ function App() {
   }
   
   useEffect(() => {
-    console.log(searched);
+    //console.log(searched);
     const budapest = async () => {
       let basicResponse = await http.get("http://api.weatherapi.com/v1/forecast.json?key=fa7cf46dad1d4b5f8c992048220306&q=Budapest&days=3");
       setBasicCity(basicResponse.data);
@@ -33,7 +33,7 @@ function App() {
       let response = await http.get(api + key + searched + "&days=3");
       setWeatherData(response.data);
     };
-    load();
+    if (searched.length >= 3) load();
   }, [searched])
 
   const metricToImperial = () => {
